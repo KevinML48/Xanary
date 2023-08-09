@@ -4,14 +4,14 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-user_space:
-    path: /espace-utilisateur
-    controller: App\Controller\UserController::userSpace
-
-edit_email:
-    path: /edit-email
-    controller: App\Controller\UserController::editEmail
-
 contact:
     path: /contact
     controller: App\Controller\ContactController::contact
+
+app_user_edit_email:
+    path: /user/edit/email
+    controller: App\Controller\UserController::editEmail
+
+app_user_edit_pseudo:
+    path: /user/edit/pseudo
+    controller: App\Controller\UserController::editPseudo

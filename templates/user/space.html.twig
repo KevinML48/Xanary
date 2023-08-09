@@ -4,7 +4,34 @@
 
 {% block body %}
     <div>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+    </div>
+
+    <div>
         <p>Email : {{ user.email }}</p>
         <p>Pseudo : {{ user.pseudo }}</p>
     </div>
+
+    <div>
+        <h2>Modifier l'email</h2>
+        <form method="post" action="{{ path('app_user_edit_email') }}">
+            <input type="email" name="new_email" placeholder="Nouvel email" required>
+            <button type="submit">Modifier</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Modifier le pseudo</h2>
+        <form method="post" action="{{ path('app_user_edit_pseudo') }}">
+            <input type="text" name="new_pseudo" placeholder="Nouveau pseudo" required>
+            <button type="submit">Modifier</button>
+        </form>
+    </div>
+
+    <a href="home">Home</a>
 {% endblock %}

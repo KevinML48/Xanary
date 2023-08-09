@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,51 +25,50 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/edit-email', name: 'edit_email')]
-    public function editEmail(Request $request): Response
+    /**
+     * @Route("/user/edit/email", name="app_user_edit_email", methods={"POST"})
+     */
+    public function editEmail(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $newEmail = $request->request->get('new_email');
         $user = $this->getUser();
-        $form = $this->createForm(EditEmailFormType::class, $user);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Persist the changes to the database
-            $entityManager = $this->entityManager;
-            $entityManager->persist($user);
+        if ($newEmail) {
+            // Valider l'email (vous pouvez utiliser des contraintes de validation Symfony)
+            // Mettre à jour l'email de l'utilisateur
+            $user->setEmail($newEmail);
+
+            // Enregistrer les modifications dans la base de données
             $entityManager->flush();
 
-            $this->addFlash('success', 'Email updated successfully.');
-
-            return $this->redirectToRoute('user_space');
+            $this->addFlash('success', 'Email mis à jour avec succès.');
+        } else {
+            $this->addFlash('error', 'L\'email ne peut pas être vide.');
         }
 
-        return $this->render('user/edit_email.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('user_space');
     }
 
-    #[Route('/user/edit-password', name: 'edit_password')]
-    public function editPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    /**
+     * @Route("/user/edit/pseudo", name="app_user_edit_pseudo", methods={"POST"})
+     */
+    public function editPseudo(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $newPseudo = $request->request->get('new_pseudo');
         $user = $this->getUser();
-        $form = $this->createForm(EditPasswordFormType::class, null, ['user' => $user]);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $newEncodedPassword = $passwordEncoder->encodePassword($user, $form->get('plainPassword')->getData());
-            $user->setPassword($newEncodedPassword);
+        if ($newPseudo) {
+            // Mettre à jour le pseudo de l'utilisateur
+            $user->setPseudo($newPseudo);
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
+            // Enregistrer les modifications dans la base de données
             $entityManager->flush();
 
-            $this->addFlash('success', 'Password updated successfully.');
-
-            return $this->redirectToRoute('user_space');
+            $this->addFlash('success', 'Pseudo mis à jour avec succès.');
+        } else {
+            $this->addFlash('error', 'Le pseudo ne peut pas être vide.');
         }
 
-        return $this->render('user/edit_password.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('user_space');
     }
 }
