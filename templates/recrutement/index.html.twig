@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RecrutementController!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/recrutement.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {% include 'navbar.html.twig' %}
+
+    <div class="container text-center">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card card-hover">
+                <img src="{{ asset('images/joueurs.png') }}" class="card-img-top" alt="Joueurs">
+                <div class="card-body">
+                    <h5 class="card-title">Joueurs</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-hover">
+                <img src="{{ asset('images/academie.png') }}" class="card-img-top" alt="Académie">
+                <div class="card-body">
+                    <h5 class="card-title">Académie</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-hover">
+                <img src="{{ asset('images/staff.png') }}" class="card-img-top" alt="Staff">
+                <div class="card-body">
+                    <h5 class="card-title">Staff</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-hover">
+                <img src="{{ asset('images/artiste.png') }}" class="card-img-top" alt="Artiste">
+                <div class="card-body">
+                    <h5 class="card-title">Artiste</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

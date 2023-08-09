@@ -1,0 +1,13 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+user_space:
+    path: /espace-utilisateur
+    controller: App\Controller\UserController::userSpace
+
+edit_email:
+    path: /edit-email
+    controller: App\Controller\UserController::editEmail

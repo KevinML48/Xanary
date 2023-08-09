@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="wrapper">
+        <h1>Register</h1>
+
+        {{ form_errors(registrationForm) }}
+
+        <form method="post">
+            <div class="input-box">
+                {{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Email', 'required': 'required'}}) }}
+                <i class='bx bxs-envelope'></i>
+            </div>
+            <div class="input-box">
+                {{ form_widget(registrationForm.pseudo, {'attr': {'placeholder': 'Username', 'required': 'required'}}) }}
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                {{ form_widget(registrationForm.plainPassword, {'attr': {'placeholder': 'Password', 'required': 'required'}}) }}
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="input-box">
+                <p>Acceptez vous tout les thermes avant de continuer ?{{ form_widget(registrationForm.agreeTerms) }}</p>
+                <label for="{{ registrationForm.agreeTerms.vars.id }}">Agree to Terms</label>
+            </div>
+
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}">
+
+            <button class="btn" type="submit">Register</button>
+        </form>
+
+        <div class="register-link">
+            <p>Already have an account <a href="{{ path('app_login') }}">Login</a></p>
+        </div>
+    </div>
+{% endblock %}

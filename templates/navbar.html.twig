@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container">
+
+        <a class="navbar-brand" href="/home">
+            <img src="{{ asset('images/logo-xanary.png') }}" alt="Bootstrap" width="30" height="24">
+        </a>
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+            <li class="nav-item" onmouseleave="hideDropdown()">
+    <a class="nav-link active text-white" aria-current="page" href="#" onmouseover="showDropdown()">Equipe</a>
+    <div id="dropdownMenu" class="dropdown-content" onmouseover="showDropdown()" onmouseleave="hideDropdown()">
+
+        <div>
+         <a href="#" onclick="toggleDropdown('valorant')">Valorant</a>
+         <div id="dropdown-valorant" style="display: none;">
+            <a href="#">Ascension</a>
+            <a href="#">Anima</a>
+         </div>
+        </div>
+
+        <div>
+         <a href="#" onclick="toggleDropdown('league-of-legends')">League of Legends</a>
+         <div id="dropdown-league-of-legends" style="display: none;">
+            <a href="#">Zhonya</a>
+            <a href="#">???</a>
+         </div>
+        </div>
+
+        <div>
+          <a href="#" onclick="toggleDropdown('rocket-league')">Rocket League</a>
+          <div id="dropdown-rocket-league" style="display: none;">
+            <a href="#">???</a>
+            <a href="#">???</a>
+          </div>
+        </div>
+
+        <div>
+          <a href="#" onclick="toggleDropdown('fortnite')">Fortnite</a>
+          <div id="dropdown-fortnite" style="display: none;">
+            <a href="#">???</a>
+            <a href="#">???</a>
+          </div>
+        </div>
+
+        <div>
+          <a href="#" onclick="toggleDropdown('nba2k')">NBA2K</a>
+          <div id="dropdown-nba2k" style="display: none;">
+            <a href="#">???</a>
+            <a href="#">???</a>
+          </div>
+        </div>
+
+        <div>
+          <a href="#" onclick="toggleDropdown('smash-bros')">Super Smash Bros</a>
+          <div id="dropdown-smash-bros" style="display: none;">
+            <a href="#">???</a>
+            <a href="#">???</a>
+          </div>
+        </div>
+
+    </div>
+</li>
+
+
+            <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="/contact">Contact</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="/recrutement">Recrutement</a>
+            </li>
+
+        </ul>
+
+        <a class="navbar-brand" href="#">
+            <img id="userImage" src="{{ asset('images/user.png') }}" alt="Bootstrap" width="50" height="44">
+        </a>
+
+    </div>
+</nav>
+
+<script>
+
+    var dropdownActive = false;
+
+        function showDropdown() {
+            var dropdownMenu = document.getElementById("dropdownMenu");
+            dropdownMenu.style.display = "block";
+            dropdownActive = true;
+        }
+
+        function hideDropdown() {
+            var dropdownMenu = document.getElementById("dropdownMenu");
+            dropdownMenu.style.display = "none";
+            dropdownActive = false;
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var navLink = document.querySelector(".nav-link");
+            var dropdownMenu = document.getElementById("dropdownMenu");
+
+        navLink.addEventListener("mouseleave", function() {
+            if (!dropdownActive) {
+                dropdownMenu.style.display = "none";
+            }
+        });
+
+        dropdownMenu.addEventListener("mouseleave", function() {
+            dropdownMenu.style.display = "none";
+            dropdownActive = false;
+        });
+    });
+
+     function toggleDropdown(game) {
+      var dropdownContent = document.getElementById("dropdown-" + game);
+      if (dropdownContent.style.display === "none") {
+        dropdownContent.style.display = "block";
+      } else {
+        dropdownContent.style.display = "none";
+      }
+    }
+
+</script>
+
+{% endblock %}
