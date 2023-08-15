@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Partenaires{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/partenariat.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {% include 'navbar.html.twig' %}
+
+    <h1>Liste des Partenaires</h1>
+
+    <div class="card-container">
+    {% for partenaire in partenaires %}
+        <div class="card">
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="{{ partenaire.getImageUrl() }}" alt="{{ partenaire.getTitre() }}">
+                </div>
+                <div class="card-text">
+                    <h2>{{ partenaire.getTitre() }}</h2>
+                    <p>{{ partenaire.getDescription() }}</p>
+                    {% if partenaire.getSite() %}
+                        <a href="{{ partenaire.getSite() }}" class="btn" target="_blank">Visiter le site</a>
+                    {% endif %}
+                    {% if partenaire.getColaboration() %}
+                        <a href="{{ path('partenaire_show', { 'id': partenaire.getId() }) }}" class="btn">En savoir plus</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+            {% if partenaire.getColaboration() %}
+                <!-- Modal -->
+                <div class="modal fade" id="colaborationModal{{ partenaire.getId() }}" tabindex="-1" role="dialog" aria-labelledby="colaborationModalLabel{{ partenaire.getId() }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="colaborationModalLabel{{ partenaire.getId() }}">Collaboration avec {{ partenaire.getTitre() }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {{ partenaire.getColaboration() }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

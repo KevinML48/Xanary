@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du Partenaire - {{ partenaire.getTitre() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/show_partenaire.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {% include 'navbar.html.twig' %}
+
+    <div class="partenaire-details">
+        <div class="partenaire-image">
+            <img src="{{ partenaire.getImageUrl() }}" alt="{{ partenaire.getTitre() }}">
+        </div>
+        <h1>{{ partenaire.getTitre() }}</h1>
+        <div class="partenaire-description">
+            <p>{{ partenaire.getDescriptionPartenaires() }}</p>
+        </div>
+        {% if partenaire.getSite() %}
+            <a href="{{ partenaire.getSite() }}" class="btn" target="_blank">Visiter le site</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

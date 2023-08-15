@@ -15,3 +15,9 @@ app_user_edit_email:
 app_user_edit_pseudo:
     path: /user/edit/pseudo
     controller: App\Controller\UserController::editPseudo
+
+partenaire_detail:
+    path: '/partenaires/{id}'
+    controller: App\Controller\PartenaireController::show
+    requirements:
+        id: \d+
