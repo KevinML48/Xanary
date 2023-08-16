@@ -23,7 +23,7 @@ class ReceptionContactCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Users')
             ->setEntityLabelInSingular('User')
 
-            ->setPageTitle("index" , "Xanary - Admistration des Utilisateurs")
+            ->setPageTitle("index" , "Xanary - Admistration des Contacts")
 
             ->setPaginatorPageSize(50);
     }

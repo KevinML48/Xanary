@@ -10,117 +10,15 @@
 
 {% block body %}
 
-    {% include 'navbar.html.twig' %}
+    <div class="center-container">
+        <h1> Bienvenue chez</h1>
+        <h2> XANARY </h2>
 
-
-<div id="logoutTab" style="display: none; text-align: center;">
-    <a class="logout" href="/logout">Logout</a>
-</div>
-
-<div id="espaceTab" style="display: none; text-align: center;">
-    <a class="espace" href="{{ path('user_space') }}">Espace</a>
-</div>
-
-    {% if pseudo %}
-    <div class="center-text">
-        <span class="accueil-speudo">Bienvenue {{ pseudo }}</span>
-    </div>
-{% endif %}
-    <br>
-
-  	<div class="xanary-tab-container">
-    <button class="xanary-tab">Xanary</button>
-    <div class="xanary-tab-content">
-      <a href="#">Ascension</a>
-      <a href="#">Anima</a>
-    </div>
-  </div>
-
-<script>
-
-
-    // Récupérez l'élément de l'image et des onglets logout et espace
-    
-    const userImage = document.getElementById('userImage');
-    const logoutTab = document.getElementById('logoutTab');
-    const espaceTab = document.getElementById('espaceTab');
-
-        // Variables pour conserver l'état des onglets logout et espace
-        let logoutTabVisible = false;
-        let espaceTabVisible = false;
-
-        // Ajoutez un écouteur d'événements sur le clic de l'image
-        userImage.addEventListener('click', (event) => {
-            event.stopPropagation(); // Empêche le clic de se propager au document
-
-            // Inversez l'état de l'onglet logout à chaque clic
-            logoutTabVisible = !logoutTabVisible;
-            espaceTabVisible = !espaceTabVisible;
-
-            // Affichez ou masquez l'onglet logout en fonction de l'état actuel
-            if (logoutTabVisible) {
-                logoutTab.style.display = 'block';
-            } else {
-                logoutTab.style.display = 'none';
-            }
-
-            // Affichez ou masquez l'onglet espace en fonction de l'état actuel
-            if (espaceTabVisible) {
-                espaceTab.style.display = 'block';
-            } else {
-                espaceTab.style.display = 'none';
-            }
-        });
-
-        // Ajoutez un écouteur d'événements sur le clic en dehors des onglets logout et espace pour les masquer
-        document.addEventListener('click', (event) => {
-            if (event.target !== userImage && event.target !== logoutTab && event.target !== espaceTab) {
-                logoutTab.style.display = 'none';
-                espaceTab.style.display = 'none';
-                logoutTabVisible = false;
-                espaceTabVisible = false;
-            }
-    });
-
-    var dropdownActive = false;
-
-        function showDropdown() {
-            var dropdownMenu = document.getElementById("dropdownMenu");
-            dropdownMenu.style.display = "block";
-            dropdownActive = true;
-        }
-
-        function hideDropdown() {
-            var dropdownMenu = document.getElementById("dropdownMenu");
-            dropdownMenu.style.display = "none";
-            dropdownActive = false;
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            var navLink = document.querySelector(".nav-link");
-            var dropdownMenu = document.getElementById("dropdownMenu");
-
-        navLink.addEventListener("mouseleave", function() {
-            if (!dropdownActive) {
-                dropdownMenu.style.display = "none";
-            }
-        });
-
-        dropdownMenu.addEventListener("mouseleave", function() {
-            dropdownMenu.style.display = "none";
-            dropdownActive = false;
-        });
-    });
-
-     function toggleDropdown(game) {
-      var dropdownContent = document.getElementById("dropdown-" + game);
-      if (dropdownContent.style.display === "none") {
-        dropdownContent.style.display = "block";
-      } else {
-        dropdownContent.style.display = "none";
-      }
-    }
-
-</script>
+        <button>
+            <a href="/bienvenue">
+                Rejoingnez nous !
+            </a>
+        </button>
+    </div
 
 {% endblock %}
