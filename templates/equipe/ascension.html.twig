@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EquipeController!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ascension.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {% include 'navbar.html.twig' %}
+
+    <div class="content">
+        <div class="left-column">
+            <img src="{{ asset('images/fond-home.jpg') }}">
+            <img src="{{ asset('images/status_ascension.png') }}" class="status-image">
+            <img src="{{ asset('images/constellation_ascension.png') }}" class="constellation-image">
+        </div>
+        <div class="right-column">
+            <img src="{{ asset('images/logo_ascension.png') }}" class="logo-image">
+            <img src="{{ asset('images/logo_jeux.png') }}" class="logo-jeux">
+            <h1>
+                Ascension est la divinité de la croissance et de la résilience.
+                Elle accompagne l'équipe qui a emprunté son nom
+            </h1>
+            <br>
+            <p>
+                Discipline, bienveillance et résilience sont les vertus que la divinité leur a inculquées. L'équipe semble progresser sans cesse, leur croissance est sans commune mesure. Leur méthodologie, leur bienveillance, forment une armure qui les protège de toutes les épreuves et leur donne confiance dans le processus. C'est sûrement la recette de leur croissance légendaire.
+            </p>
+
+            <div class="roster">
+                <h2>
+                    Staff :
+                </h2>
+
+                <img src="{{ asset('/images/manager_ascension_pdp.png')}}">
+                <img src="{{ asset('/images/coach_ascension_pp.png')}}">
+                <img src="{{ asset('/images/helper_ascension_pp.png')}}">
+
+                <br>
+                <br>
+                <br>
+
+                <h3>
+                    Joueurs :
+                </h3>
+
+                <img class="joueurs-smokey" src="{{ asset('/images/smokey_ascension_pdp.png')}}">
+                <img class="joueurs" src="{{ asset('/images/trapa_keep_ascension_pdp.png')}}">
+                <img class="joueurs" src="{{ asset('/images/typed_laple_ascension_pdp.png')}}">
+                <img class="joueurs" src="{{ asset('/images/gingko_ascension_pdp.png')}}">
+                <img class="joueurs-realzz" src="{{ asset('/images/realzz_ascension_pdp.png')}}">
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

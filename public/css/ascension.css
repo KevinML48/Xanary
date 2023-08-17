@@ -1,0 +1,105 @@
+/* Dans votre fichier ascension.css */
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-column {
+    position: relative;
+    background-image: url(../images/fond-home.png);
+    flex: 0.5; /* Ajustez la largeur de la colonne de gauche */
+}
+
+.status-image {
+    width: 49.1%; /* Ajustez la largeur selon vos besoins */
+    margin-top: 130px;
+    margin-left: 280px;
+}
+
+.constellation-image {
+    position: absolute;
+    left: -40px;
+    width: 90%; /* Ajustez la largeur selon vos besoins */
+}
+
+.right-column {
+    background: #5A8F64;
+    flex: 1;
+    text-align: left;
+}
+
+.logo-image {
+    width: 330px;
+    margin-left: 450px;
+    margin-top: 40px;
+}
+
+.logo-jeux {
+    width: 230px;
+    margin-left: 535px;
+    margin-bottom: 40px;
+}
+
+
+h1 {
+    margin-left: 20px;
+    margin-top: 20px; /* Ajustez la marge supérieure du titre */
+    color: #000;
+font-size: 20px;
+font-style: normal;
+font-weight: 800;
+line-height: normal;
+}
+
+p {
+    margin-left: 20px;
+    color: #000;
+font-size: 15px;
+font-style: normal;
+font-weight: 800;
+line-height: normal;
+}
+
+.roster {
+    margin-left: 20px; /* Décalage de 20px vers la gauche */
+}
+
+.roster h2,
+.roster h3 {
+    font-weight: bold;
+    display: inline-block; /* Mettre les titres en ligne */
+    margin-right: 10px; /* Espace entre le titre et les images */
+}
+
+.roster h3 {
+    clear: both; /* Forcer le contenu suivant à passer en dessous */
+}
+
+.roster img {
+    width: 90px;
+    vertical-align: middle; /* Alignement vertical au centre */
+    margin-right: 10px; /* Espace entre les images */
+}
+
+.roster h2,
+.roster h3 {
+    font-weight: bold;
+    display: inline-block; /* Mettre les titres en ligne */
+    margin-right: 10px; /* Espace entre le titre et les images */
+}
+
+.joueurs {
+    width: 90px;
+    margin-right: 10px; /* Espace entre les images */
+}
+
+.joueurs-realzz {
+    width: 70px;
+    margin-right: 10px; /* Espace entre les images */
+}
+
+.joueurs-smokey {
+    width: 88px;
+    margin-right: 10px; /* Espace entre les images */
+}
