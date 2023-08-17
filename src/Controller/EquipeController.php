@@ -2,16 +2,29 @@
 
 namespace App\Controller;
 
+use App\Entity\Ascension;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class EquipeController extends AbstractController
 {
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     #[Route('/ascension', name: 'app_ascension')]
     public function index(): Response
     {
+        $ascensionRepository = $this->entityManager->getRepository(Ascension::class);
+        $ascensions = $ascensionRepository->findAll();
+
         return $this->render('equipe/ascension.html.twig', [
+            'ascensions' => $ascensions,
             'controller_name' => 'EquipeController',
         ]);
     }

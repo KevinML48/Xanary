@@ -18,7 +18,9 @@
             <img src="{{ asset('images/status_ascension.png') }}" class="status-image">
             <img src="{{ asset('images/constellation_ascension.png') }}" class="constellation-image">
         </div>
-        <div class="right-column">
+
+      <div class="right-column">  <!-- PARTIE DE GAUCHE --> 
+
             <img src="{{ asset('images/logo_ascension.png') }}" class="logo-image">
             <img src="{{ asset('images/logo_jeux.png') }}" class="logo-jeux">
             <h1>
@@ -35,27 +37,88 @@
                     Staff :
                 </h2>
 
-                <img src="{{ asset('/images/manager_ascension_pdp.png')}}">
-                <img src="{{ asset('/images/coach_ascension_pp.png')}}">
-                <img src="{{ asset('/images/helper_ascension_pp.png')}}">
+                <div class="roster-item">
+                {% for ascension in ascensions %}
+                    <img src="{{ asset(ascension.getManagerPp()) }}">
+                    <p>
+                            {{ ascension.getManagerPoste() }}
+                        {% endfor %}
+                    </p>
+                </div>
 
-                <br>
-                <br>
-                <br>
+                <div class="roster-item">
+                {% for ascension in ascensions %}
+                    <img src="{{ asset(ascension.getCoachPp()) }}">
+                    <p>
+                           {{ ascension.getCoachPoste() }}
+                        {% endfor %}
+                    </p>
+                </div>
 
-                <h3>
-                    Joueurs :
-                </h3>
-
-                <img class="joueurs-smokey" src="{{ asset('/images/smokey_ascension_pdp.png')}}">
-                <img class="joueurs" src="{{ asset('/images/trapa_keep_ascension_pdp.png')}}">
-                <img class="joueurs" src="{{ asset('/images/typed_laple_ascension_pdp.png')}}">
-                <img class="joueurs" src="{{ asset('/images/gingko_ascension_pdp.png')}}">
-                <img class="joueurs-realzz" src="{{ asset('/images/realzz_ascension_pdp.png')}}">
+                <div class="roster-item">
+                {% for ascension in ascensions %}
+                    <img src="{{ asset(ascension.getHelperPp()) }}">
+                    <p>
+                            {{ ascension.getHelperPoste() }}
+                        {% endfor %}
+                    </p>
+                </div>
 
             </div>
 
-        </div>
+    
+            <div class="roster">  
+                <h3>
+                    Joueurs :
+                </h3>
+  
+                <div class="roster-item">
+                    {% for ascension in ascensions %}
+                        <img class="joueurs-smokey" src="{{ asset(ascension.getSmokeyPp()) }}">
+                        <p>
+                            {{ ascension.getSmokeyPoste() }}
+                        </p>
+                    {% endfor %}
+                </div>
+
+                <div class="roster-item">
+                    {% for ascension in ascensions %}
+                        <img class="joueurs" src="{{ asset(ascension.getTrapaPp()) }}">
+                        <p>
+                            {{ ascension.getTrapaPoste() }}
+                        </p>
+                    {% endfor %}
+                </div>
+
+                <div class="roster-item">
+                    {% for ascension in ascensions %}
+                        <img class="joueurs" src="{{ asset(ascension.getTypedPp()) }}">
+                        <p>
+                            {{ ascension.getTypedPoste() }}
+                        </p>
+                    {% endfor %}
+                </div>
+                
+                <div class="roster-item">
+                    {% for ascension in ascensions %}
+                        <img class="joueurs" src="{{ asset(ascension.getGingkoPp()) }}">
+                        <p>
+                            {{ ascension.getGinkgoPoste() }}
+                        </p>
+                    {% endfor %}
+                </div>
+                
+                <div class="roster-item">
+                    {% for ascension in ascensions %}
+                        <img class="joueurs-realzz" src="{{ asset(ascension.getRealzzPp()) }}">
+                        <p>
+                            {{ ascension.getRealzzPoste() }}
+                        </p>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div> <!-- FIN DE PARTIE DE GAUCHE --> 
     </div>
 
 {% endblock %}

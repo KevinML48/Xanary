@@ -19,16 +19,16 @@ class Partenaire
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 5000, nullable: true)]
+    #[ORM\Column(length: 800, nullable: true)]
     private ?string $description_partenaires = null;
 
     #[ORM\Column(length: 255)]
     private ?string $colaboration = null;
 
-    #[ORM\Column(length: 1000, nullable: true)]
+    #[ORM\Column(length: 800, nullable: true)]
     private ?string $site = null;
 
-    #[ORM\Column(length: 5000, nullable: true)]
+    #[ORM\Column(length: 800, nullable: true)]
     private ?string $image_url = null;
 
     public function getId(): ?int
