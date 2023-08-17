@@ -348,14 +348,14 @@ class Ascension
         return $this;
     }
 
-    public function getSmokeyImgSpeudo(): ?string
+    public function getSmokeyPpSpeudo(): ?string
     {
-        return $this->smokey_img_speudo;
+        return $this->smokey_pp_speudo;
     }
 
-    public function setSmokeyImgSpeudo(string $smokey_img_speudo): static
+    public function setSmokeyPpSpeudo(string $smokey_pp_speudo): static
     {
-        $this->smokey_img_speudo = $smokey_img_speudo;
+        $this->smokey_pp_speudo = $smokey_pp_speudo;
 
         return $this;
     }
@@ -372,14 +372,14 @@ class Ascension
         return $this;
     }
 
-    public function getTypedImgSpeudo(): ?string
+    public function getTypedPpSpeudo(): ?string
     {
-        return $this->typed_img_speudo;
+        return $this->typed_pp_speudo;
     }
 
-    public function setTypedImgSpeudo(string $typed_img_speudo): static
+    public function setTypedPpSpeudo(string $typed_img_speudo): static
     {
-        $this->typed_img_speudo = $typed_img_speudo;
+        $this->typed_img_speudo = $typed_pp_speudo;
 
         return $this;
     }
@@ -444,14 +444,14 @@ class Ascension
         return $this;
     }
 
-    public function getGingko(): ?string
+    public function getGingkoAge(): ?string
     {
-        return $this->gingko;
+        return $this->gingko_age;
     }
 
-    public function setGingko(string $gingko): static
+    public function setGingkoAge(string $gingko): static
     {
-        $this->gingko = $gingko;
+        $this->gingko = $gingko_age;
 
         return $this;
     }

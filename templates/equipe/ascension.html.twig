@@ -14,7 +14,6 @@
 
     <div class="content">
         <div class="left-column">
-            <img src="{{ asset('images/fond-home.jpg') }}">
             <img src="{{ asset('images/status_ascension.png') }}" class="status-image">
             <img src="{{ asset('images/constellation_ascension.png') }}" class="constellation-image">
         </div>
@@ -74,7 +73,9 @@
   
                 <div class="roster-item">
                     {% for ascension in ascensions %}
-                        <img class="joueurs-smokey" src="{{ asset(ascension.getSmokeyPp()) }}">
+                        <a class="player-link" href="#">
+                            <img class="joueurs-smokey" src="{{ asset(ascension.getSmokeyPp()) }}" data-pp="{{ ascension.getSmokeyPp() }}" data-pp-speudo="{{ ascension.getSmokeyPpSpeudo() }}" data-poste="{{ ascension.getSmokeyPoste() }}" data-age="{{ ascension.getSmokeyAge() }}" data-description="{{ ascension.getSmokeyDescription() }}">
+                        </a>
                         <p>
                             {{ ascension.getSmokeyPoste() }}
                         </p>
@@ -83,7 +84,9 @@
 
                 <div class="roster-item">
                     {% for ascension in ascensions %}
-                        <img class="joueurs" src="{{ asset(ascension.getTrapaPp()) }}">
+                        <a class="player-link" href="#">
+                            <img class="joueurs" src="{{ asset(ascension.getTrapaPp()) }}" data-pp="{{ ascension.getTrapaPp() }}" data-pp-speudo="{{ ascension.getTrapaPpSpeudo() }}" data-poste="{{ ascension.getTrapaPoste() }}" data-age="{{ ascension.getTrapaAge() }}" data-description="{{ ascension.getTrapaDescription() }}">
+                        </a>
                         <p>
                             {{ ascension.getTrapaPoste() }}
                         </p>
@@ -92,7 +95,9 @@
 
                 <div class="roster-item">
                     {% for ascension in ascensions %}
-                        <img class="joueurs" src="{{ asset(ascension.getTypedPp()) }}">
+                        <a class="player-link" href="#">
+                            <img class="joueurs" src="{{ asset(ascension.getTypedPp()) }}" data-pp="{{ ascension.getTypedPp() }}" data-pp-speudo="{{ ascension.getTypedPpSpeudo() }}" data-poste="{{ ascension.getTypedPoste() }}" data-age="{{ ascension.getTypedAge() }}" data-description="{{ ascension.getTypedDescription() }}">
+                        </a>
                         <p>
                             {{ ascension.getTypedPoste() }}
                         </p>
@@ -101,7 +106,9 @@
                 
                 <div class="roster-item">
                     {% for ascension in ascensions %}
-                        <img class="joueurs" src="{{ asset(ascension.getGingkoPp()) }}">
+                        <a class="player-link" href="#">
+                            <img class="joueurs" src="{{ asset(ascension.getGingkoPp()) }}" data-pp="{{ ascension.getGingkoPp() }}" data-pp-speudo="{{ ascension.getGingkoPpSpeudo() }}" data-poste="{{ ascension.getGinkgoPoste() }}" data-age="{{ ascension.getGingkoAge() }}" data-description="{{ ascension.getGingkoDescription() }}">
+                        </a>
                         <p>
                             {{ ascension.getGinkgoPoste() }}
                         </p>
@@ -110,7 +117,9 @@
                 
                 <div class="roster-item">
                     {% for ascension in ascensions %}
-                        <img class="joueurs-realzz" src="{{ asset(ascension.getRealzzPp()) }}">
+                        <a class="player-link" href="#">
+                            <img class="joueurs-realzz" src="{{ asset(ascension.getRealzzPp()) }}" data-pp="{{ ascension.getRealzzPp() }}" data-pp-speudo="{{ ascension.getRealzzPpSpeudo() }}" data-poste="{{ ascension.getRealzzPoste() }}" data-age="{{ ascension.getRealzzAge() }}" data-description="{{ ascension.getRealzzDescription() }}">
+                        </a>
                         <p>
                             {{ ascension.getRealzzPoste() }}
                         </p>
@@ -118,7 +127,67 @@
                 </div>
             </div>
 
+                <div id="player-details" style="display: none;" class="details-container">
+    <div class="details-left">
+        <p id="player-pp"><img id="pp" src="" alt=""></p>
+        <p id="player-pp-speudo"><img id="pp-speudo-content" src="" alt=""></p>
+    </div>
+    <div class="details-right">
+        <div class="details-right-inner">
+            <p id="player-poste">Poste : <span id="poste-content"></span></p>
+            <p id="player-age">Age : <span id="age-content"></span></p>
+            <p id="player-description">Description : <span id="description-content"></span></p>
+        </div>
+    </div>
+</div>
+
+
+
         </div> <!-- FIN DE PARTIE DE GAUCHE --> 
     </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Sélectionnez l'élément correspondant au joueur "Smokey"
+        const smokeyLink = document.querySelector(".joueurs-smokey.player-link");
+
+        // Simulez un clic automatique sur l'élément
+        if (smokeyLink) {
+            smokeyLink.click();
+        }
+
+        const links = document.querySelectorAll(".player-link");
+        const ageElement = document.getElementById("age-content");
+        const posteElement = document.getElementById("poste-content");
+        const ppSpeudoElement = document.getElementById("pp-speudo-content"); // Balise img
+        const ppElement = document.getElementById("pp"); // Balise img
+        const descriptionElement = document.getElementById("description-content");
+        const detailsContainer = document.getElementById("player-details");
+
+        links.forEach((link) => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault(); // Empêche le comportement par défaut du lien
+
+                const image = link.querySelector("img"); // Sélectionnez l'image à l'intérieur du lien
+                const age = image.getAttribute("data-age");
+                const description = image.getAttribute("data-description");
+                const poste = image.getAttribute("data-poste"); // Obtenez le poste
+                const ppSpeudoSrc = image.getAttribute("data-pp-speudo"); // Obtenez la source de l'image du pp_speudo
+                const ppSrc = image.getAttribute("data-pp"); // Obtenez la source de l'image du pp_speudo
+
+                // Mettez à jour les éléments avec les informations appropriées
+                ageElement.textContent = age;
+                posteElement.textContent = poste; // Mettez à jour le poste
+                ppSpeudoElement.src = ppSpeudoSrc; // Mettez à jour la source de l'image du pp_speudo
+                ppElement.src = ppSrc; // Mettez à jour la source de l'image du pp_speudo
+                descriptionElement.textContent = description;
+
+                // Affichez les détails et masquez les autres
+                detailsContainer.style.display = "block";
+            });
+        });
+    });
+</script>
+
 
 {% endblock %}
