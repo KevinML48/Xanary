@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/actus.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1>
+        <img src="https://cdn.discordapp.com/attachments/727136125071917067/1145386718153932850/image.png">
+    </h1>
+    <ul>
+        {% for actualite in actualités %}
+            <img class="actus_du_jours" src="{{ actualite.getActusDuJours() }}"/>
+        {% endfor %}
+    </ul>
+
+    <div class="images-container">
+    {% for actualite in actualités %}
+        <img class="actus_a_poster" src="{{ actualite.getActusAPoster() }}"/>
+        <img class="actus_a_poster" id="a_decaler" src="{{ actualite.getActusAPoster1() }}"/>
+        <img class="actus_a_poster" src="{{ actualite.getActusAPoster2() }}"/>
+    {% endfor %}
+</div>
+
+    <div class="xactu-container">
+        <img class="xactu" src="https://cdn.discordapp.com/attachments/727136125071917067/1145386718153932850/image.png">
+        <img class="xactu" src="https://cdn.discordapp.com/attachments/727136125071917067/1145386718153932850/image.png">
+        <img class="xactu" src="https://cdn.discordapp.com/attachments/727136125071917067/1145386718153932850/image.png">
+        <img class="xactu" src="https://cdn.discordapp.com/attachments/727136125071917067/1145386718153932850/image.png">
+        <img class="xactu" src="https://cdn.discordapp.com/attachments/727136125071917067/1145386718153932850/image.png">
+        <img class="xactu" src="https://cdn.discordapp.com/attachments/727136125071917067/1145386718153932850/image.png">
+        <img class="xactu" src="https://cdn.discordapp.com/attachments/727136125071917067/1145386718153932850/image.png">
+        <img class="xactu" src="https://cdn.discordapp.com/attachments/727136125071917067/1145386718153932850/image.png">
+        <img class="xactu" src="https://cdn.discordapp.com/attachments/727136125071917067/1145386718153932850/image.png">
+    </div>
+
+     <div class="table-container">
+    <table class="table-modern">
+        <thead>
+            <tr>
+                <th>Jeu</th>
+                <th>Types d'événement</th>
+                <th>Equipe</th>
+                <th>Date</th>
+                <th>Reset</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for actualite in actualités %}
+                <tr>
+                    <td><img class="images_tableau" src="{{ actualite.getActusValorant() }}"/></td>
+                    <td>{{ actualite.getActusTypeEvenementiel() }}</td>
+                    <td>
+    {% if actualite.getActusEquipeAscension() %}
+        <a href="{{ path('page_informations_ascension') }}">
+            {{ actualite.getActusEquipeAscension() }}
+        </a>
+    {% endif %}
+    
+    {% if actualite.getActusEquipeAnima() %}
+        <a href="{{ path('page_informations_anima') }}">
+            {{ actualite.getActusEquipeAnima() }}
+        </a>
+    {% endif %}
+</td>
+                    <td>{{ actualite.getActusDateValorant() }}</td>
+                    <td><img class="images_tableau" src="{{ actualite.getActusReseauxValorant() }}"/></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

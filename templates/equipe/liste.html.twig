@@ -1,0 +1,17 @@
+{# templates/equipe/liste.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des équipes</title>
+</head>
+<body>
+    <h1>Ascension</h1>
+    <ul>
+        {% for equipe in equipes %}
+            <li>
+                {{ equipe.poste }} - <a href="{{ path('afficher_equipe', {'id': equipe.id}) }}"><img src="{{ equipe.getImgPdp() }}" alt="{{ equipe.speudo }}" width="100" height="100"></a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

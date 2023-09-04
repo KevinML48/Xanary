@@ -1,0 +1,91 @@
+body {
+    background-image: url(../images/fond-home.png);
+}
+
+/* Ajoutez du CSS personnalisé ici */
+h1 img {
+    margin-top: 40px;
+    margin-left: 100px;
+    width: 350px;
+    float: left; /* Place le h1 à gauche */
+    margin-right: 20px; /* Espace entre le h1 et les éléments à droite */
+}
+
+ul {
+    overflow: hidden; /* Assure que la liste s'adapte à la hauteur du contenu */
+}
+
+.actus_du_jours {
+    margin-top: 30px;
+    float: center; /* Place les éléments .actus_du_jours à droite */
+    width: 900px;
+}
+
+.images-container {
+    margin-top: 150px;
+    margin-left: 250px;
+    display: flex; /* Utiliser flexbox pour afficher les images en ligne */
+    align-items: center; /* Centrer verticalement les images dans le conteneur */
+}
+
+.actus_a_poster {
+    /* Vos styles pour les images ici */
+    max-width: 20%; /* Assurez-vous que les images ne dépassent pas la largeur du conteneur */
+    margin-right: 10px; /* Espacement entre les images (ajustez selon vos besoins) */
+}
+
+#a_decaler {
+    margin-right: 200px;
+}
+
+.xactu-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 200px;
+    display: flex; /* Utiliser flexbox pour afficher les images en ligne */
+}
+
+.xactu {
+    /* Vos styles pour les images ici */
+    max-width: 100%; /* Assurez-vous que les images ne dépassent pas la largeur du conteneur */
+    margin-right: 10px; /* Espacement entre les images (ajustez selon vos besoins) */
+}
+
+/* CSS pour le conteneur du tableau */
+.table-container {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px; /* Vous pouvez ajuster la largeur maximale selon vos besoins */
+}
+
+/* CSS pour le tableau moderne */
+.table-modern {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    margin-top: 20px; /* Espacement entre le titre et le tableau */
+    color: #292828;
+}
+
+.table-modern th,
+.table-modern td {
+    padding: 12px;
+    text-align: left;
+}
+
+.table-modern th {
+    background-color: #201f1f;
+    color: #ffffff;
+}
+
+td {
+    color: #ffffff;
+    background-color: #201f1f;
+}
+
+
+/* CSS pour les images du tableau */
+.images_tableau {
+    max-width: 50px;
+    max-height: 50px;
+}

@@ -21,3 +21,25 @@ partenaire_detail:
     controller: App\Controller\PartenaireController::show
     requirements:
         id: \d+
+
+app_evenementiel:
+    path: /evenementiel
+    controller: App\Controller\EvenementielController::index
+
+# config/routes.yaml
+
+page_informations_ascension:
+    path: /page_informations_ascension
+    controller: App\Controller\EvenementielController::pageInformationsAscension
+
+page_informations_anima:
+    path: /page_informations_anima
+    controller: App\Controller\EvenementielController::pageInformationsAnima
+
+liste_equipes:
+    path: /equipes
+    controller: App\Controller\EquipeController::listeEquipes
+
+afficher_equipe:
+    path: /equipe/{id}
+    controller: App\Controller\EquipeController::afficherEquipe
